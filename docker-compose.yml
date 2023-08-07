@@ -1,0 +1,19 @@
+version: '2'
+services:
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    env_file: .env
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    command: [ "yarn", "start" ]
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: abc123 
