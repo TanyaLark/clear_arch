@@ -41,9 +41,9 @@ export class GlobalDatabaseContext implements IGlobalDatabaseContext {
     return this._articleRepository;
   }
 
-  public startTransaction(): Promise<void> {
+  public async startTransaction(): Promise<void> {
     this._queryRunner = this.appDataSource.createQueryRunner();
-    this._queryRunner.startTransaction();
+    await this._queryRunner.startTransaction();
     return;
   }
 
